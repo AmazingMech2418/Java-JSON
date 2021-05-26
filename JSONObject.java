@@ -208,6 +208,11 @@ public class JSONObject {
         int[] values = {0};
         int i = 0;
         // We need a key for each parameter of the object
+
+        if(data.indexOf(":") == -1) {
+            return result;
+        } 
+
         String currentKey = data.substring(i, data.indexOf(":", i)).trim();
         currentKey = currentKey.substring(1, currentKey.length() - 1);
         // Move i to after key
