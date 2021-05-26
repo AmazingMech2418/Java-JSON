@@ -391,13 +391,37 @@ public class JSONObject {
      * @return    data as a String
      **/
     public String toString() {
-        if(type == Types.ARRAY)
-            return arrData.toString();
-        else {
-            String building = "Object Data:";
-            for(String key : objData.keySet()) {
-                building += "\n\t" + key + ": " + objData.get(key);
+        if(type == Types.ARRAY) {
+            String building = "[";
+            for(Object item : arrData) {
+                if(!building.equals("[")) {
+                    building += ", ";
+                }
+                if(item instanceof String) {
+                    building += "\"" + ((String)item).replace("\\", "\\\\").replace("\n", "\\n").replace("\t", "\\t").replace("\"", "\\\"") + "\"";
+                } else {
+                    building += item + "";
+                }
             }
+            building += "]";
+            return building;
+        } else {
+            String building = "{";
+            for(String key : objData.keySet()) {
+                if(!building.equals("{")) {
+                    building += ", ";
+                }
+                building += "\"" + ((String)key).replace("\\", "\\\\").replace("\n", "\\n").replace("\t", "\\t").replace("\"", "\\\"") + "\": ";
+
+                Object item = objData.get(key);
+
+                if(item instanceof String) {
+                    building += "\"" + ((String)item).replace("\\", "\\\\").replace("\n", "\\n").replace("\t", "\\t").replace("\"", "\\\"") + "\"";
+                } else {
+                    building += item + "";
+                }
+            }
+            building += "}";
             return building;
         }
     }
