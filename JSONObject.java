@@ -57,9 +57,11 @@ public class JSONObject {
             char thisChar = data.charAt(i);
             if(thisChar == '\\') {
                 // Escape codes
-                // - Currently only supports \n and escaping single characters
+                // - Currently only supports \n, \t, \\, and escaping single characters
                 i++;
                 if(data.charAt(i) == 'n') currentContent += "\n";
+                else if(data.charAt(i) == 't') currentContent += "\t";
+                else if(data.charAt(i) == '\\') currentContent += "\\";
                 else
                     currentContent += data.substring(i, i+1);
             } else if(includes(openAndClose, thisChar)) {
