@@ -444,7 +444,7 @@ public class JSONObject {
      * @param   val   the value
      **/
     public void set(String key, Object val) {
-        if(type == Types.ARRAY) return null;
+        if(type == Types.ARRAY) return;
         objData.put(key, val);
     }
 
@@ -455,7 +455,7 @@ public class JSONObject {
      * @param   val     the value
      **/
     public void set(int index, Object val) {
-        if(type == Types.OBJECT) return null;
+        if(type == Types.OBJECT) return;
         arrData.set(index, val);
     }
 
@@ -465,7 +465,7 @@ public class JSONObject {
      * @param   val     the value
      **/
     public void add(Object val) {
-        if(type == Types.OBJECT) return null;
+        if(type == Types.OBJECT) return;
         arrData.add(val);
     }
 
@@ -476,7 +476,7 @@ public class JSONObject {
      * @param   val     the value
      **/
     public void add(int index, Object val) {
-        if(type == Types.OBJECT) return null;
+        if(type == Types.OBJECT) return;
         arrData.add(index, val);
     }
     
