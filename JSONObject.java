@@ -436,6 +436,49 @@ public class JSONObject {
         if(type == Types.ARRAY) return null;
         return objData.get(key);
     }
+
+    /**
+     * Sets a key in the object
+     * 
+     * @param   key   the key
+     * @param   val   the value
+     **/
+    public void set(String key, Object val) {
+        if(type == Types.ARRAY) return null;
+        objData.put(key, val);
+    }
+
+    /**
+     * Sets an index in the array
+     * 
+     * @param   index   the index
+     * @param   val     the value
+     **/
+    public void set(int index, Object val) {
+        if(type == Types.OBJECT) return null;
+        arrData.set(index, val);
+    }
+
+    /**
+     * Adds to the array
+     * 
+     * @param   val     the value
+     **/
+    public void add(Object val) {
+        if(type == Types.OBJECT) return null;
+        arrData.add(val);
+    }
+
+    /**
+     * Adds to the array
+     * 
+     * @param   index   the index 
+     * @param   val     the value
+     **/
+    public void add(int index, Object val) {
+        if(type == Types.OBJECT) return null;
+        arrData.add(index, val);
+    }
     
     /**
      * Gets an index from an array
